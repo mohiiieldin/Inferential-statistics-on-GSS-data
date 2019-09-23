@@ -11,9 +11,6 @@ output:
     theme: spacelab
 ---
 
-## See the HTML output of the file by clicking [Here](https://l.facebook.com/l.php?u=https%3A%2F%2Fcoursera-assessments.s3.amazonaws.com%2Fassessments%2F1569175552307%2Fd739735a-621c-4569-ad48-d372617c16c9%2F_8c07d0c4deec88b787e5acb40f474861_reg_model_project.html%3Ffbclid%3DIwAR0oqlmupaQSDU2MxGNxiMg9pgXhjauAoFHktA8GqcYtXckmHet-ywYGixc&h=AT3XQXl5ewkun5mqAkhkwmivcQsKYRyo2UCVg86sbekTrJ7SuunXJh1R1vM44jXs40qBIw6unKjsE0x0DnxH8Ybd6-t90Vhjl9z7zl0ZWRkkXAl361kKolPf7BeZ5cNjS6le61VPGvyXJ6B31ptuzw)
-
-
 ## Setup
 
 ### Load packages
