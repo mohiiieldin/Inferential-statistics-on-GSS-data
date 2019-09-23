@@ -1,12 +1,16 @@
 # Inferential-statistics-on-GSS-data
 
-## See the [Code book](https://d3c33hcgiwev3.cloudfront.net/_8abbe344133a7a8c98cfabe01a5075c2_gss.html?Expires=1569369600&Signature=DZ7QJ-6ciXjheco5HN91dRFOr00kllHoqYpjwB8cBcIPbMjX-wB4z9wxdAOOvXS8zvjFgtLP-krdgpn~enOMyQB5G7ivhSXDvuJtY51wZnJlDF5THNpJGwMeuIBINvHWsUpb-f1YJSMHPR~414vbAGwM8r7O3IFpOCqci8519D0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A) 
+## This is the project of Inferential-statistics course on Coursera by duke university
+
+## I will make a reasearch question on the data and try to answer it using data manipulation, EDA and infrential statistics that i have learned in the course.
 
 ## See the [HTML output](https://coursera-assessments.s3.amazonaws.com/assessments/1569245212974/a0f3d04e-4442-46b0-b9c3-53226dead93e/infrential-statistics-project.html) of the R-markdwon
 
-## [Project data](https://d3c33hcgiwev3.cloudfront.net/_5db435f06000e694f6050a2d43fc7be3_gss.Rdata?Expires=1569369600&Signature=K9AEW9RlUnRmCh6PlGcyzNYflR3xWRKEGOBq8PqhUVzaEgVjYI-bhhG1dOUxww3IB4tzcctBMkpSSckuFfrT9gRAh-xb6M4GH~QvfRH4Puoo5dA48di~liclNI7OZbzUSD~D1g4JAFD4DugSvmHKxVCNHF6~T0pBx3-Otz3zaSI_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
+## See the [Code book](https://d3c33hcgiwev3.cloudfront.net/_8abbe344133a7a8c98cfabe01a5075c2_gss.html?Expires=1569369600&Signature=DZ7QJ-6ciXjheco5HN91dRFOr00kllHoqYpjwB8cBcIPbMjX-wB4z9wxdAOOvXS8zvjFgtLP-krdgpn~enOMyQB5G7ivhSXDvuJtY51wZnJlDF5THNpJGwMeuIBINvHWsUpb-f1YJSMHPR~414vbAGwM8r7O3IFpOCqci8519D0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A) 
 
-## I will make a reasearch question on the data and try to answer it using data manipulation, EDA and infrential statistics that i have learned in the course.
+## [Project data](https://d3c33hcgiwev3.cloudfront.net/_5db435f06000e694f6050a2d43fc7be3_gss.Rdata?Expires=1569369600&Signature=K9AEW9RlUnRmCh6PlGcyzNYflR3xWRKEGOBq8PqhUVzaEgVjYI-bhhG1dOUxww3IB4tzcctBMkpSSckuFfrT9gRAh-xb6M4GH~QvfRH4Puoo5dA48di~liclNI7OZbzUSD~D1g4JAFD4DugSvmHKxVCNHF6~T0pBx3-Otz3zaSI_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A) 
+
+### Note : if are using Google chrome you might need to save the data as .Rdata instead of .gz to work with you. 
 
 ### Data description
 
