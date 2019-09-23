@@ -1,4 +1,10 @@
 # Inferential-statistics-on-GSS-data
+
+## See the [Code book](https://d3c33hcgiwev3.cloudfront.net/_8abbe344133a7a8c98cfabe01a5075c2_gss.html?Expires=1569369600&Signature=DZ7QJ-6ciXjheco5HN91dRFOr00kllHoqYpjwB8cBcIPbMjX-wB4z9wxdAOOvXS8zvjFgtLP-krdgpn~enOMyQB5G7ivhSXDvuJtY51wZnJlDF5THNpJGwMeuIBINvHWsUpb-f1YJSMHPR~414vbAGwM8r7O3IFpOCqci8519D0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A) 
+
+## See the [HTML output](https://coursera-assessments.s3.amazonaws.com/assessments/1569245212974/a0f3d04e-4442-46b0-b9c3-53226dead93e/infrential-statistics-project.html) of the R-markdwon
+
+
 ## I will make a reasearch question on the data and try to answer it using data manipulation, EDA and infrential statistics that i have learned in the course.
 
 ### Data description
@@ -13,8 +19,4 @@ Unlike the full General Social Survey Cumulative File, the extract has been sani
 
 ### Data scope  
 
-The data sample is randomized across all united states so it can be generalized on all the adult from 18 to 89 years old but causal inference is not recommended becuase it's an observational data and causality needs a  variable that changes accross the time 
-
-## [Code book](https://d3c33hcgiwev3.cloudfront.net/_8abbe344133a7a8c98cfabe01a5075c2_gss.html?Expires=1569369600&Signature=DZ7QJ-6ciXjheco5HN91dRFOr00kllHoqYpjwB8cBcIPbMjX-wB4z9wxdAOOvXS8zvjFgtLP-krdgpn~enOMyQB5G7ivhSXDvuJtY51wZnJlDF5THNpJGwMeuIBINvHWsUpb-f1YJSMHPR~414vbAGwM8r7O3IFpOCqci8519D0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
-
-## [HTML output](https://coursera-assessments.s3.amazonaws.com/assessments/1569245212974/a0f3d04e-4442-46b0-b9c3-53226dead93e/infrential-statistics-project.html) 
+The data sample is randomized across all united states so it can be generalized on all the adult from 18 to 89 years old but causal inference is not recommended becuase it's an observational data and causality needs experimental data.
