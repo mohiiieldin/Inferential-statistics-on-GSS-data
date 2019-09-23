@@ -4,6 +4,7 @@
 
 ## See the [HTML output](https://coursera-assessments.s3.amazonaws.com/assessments/1569245212974/a0f3d04e-4442-46b0-b9c3-53226dead93e/infrential-statistics-project.html) of the R-markdwon
 
+## [Project data](https://d3c33hcgiwev3.cloudfront.net/_5db435f06000e694f6050a2d43fc7be3_gss.Rdata?Expires=1569369600&Signature=K9AEW9RlUnRmCh6PlGcyzNYflR3xWRKEGOBq8PqhUVzaEgVjYI-bhhG1dOUxww3IB4tzcctBMkpSSckuFfrT9gRAh-xb6M4GH~QvfRH4Puoo5dA48di~liclNI7OZbzUSD~D1g4JAFD4DugSvmHKxVCNHF6~T0pBx3-Otz3zaSI_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
 
 ## I will make a reasearch question on the data and try to answer it using data manipulation, EDA and infrential statistics that i have learned in the course.
 
