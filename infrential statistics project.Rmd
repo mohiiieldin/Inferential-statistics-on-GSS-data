@@ -1,0 +1,183 @@
+---
+title: "Statistical inference with the GSS data"
+author: "Mohie eldin Muhammad"
+date : "2019/9/13"
+output:
+  html_document:
+    toc : yes 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+```
+
+### Load data file that contains gss object
+```{r load-data}
+#the data.Rdata fille and R Markdwon are in the same directory
+mydata <- load("data.Rdata")
+```
+
+
+
+* * *
+
+## Part 1: Data
+### Data description
+
+Since 1972, the General Social Survey (GSS) has been monitoring societal change and studying the growing complexity of American society. The GSS aims to gather data on contemporary American society in order to monitor and explain trends and constants in attitudes, behaviors, and attributes; to examine the structure and functioning of society in general as well as the role played by relevant subgroups; to compare the United States to other societies in order to place American society in comparative perspective and develop cross-national models of human society; and to make high-quality data easily accessible to scholars, students, policy makers, and others, with minimal cost and waiting.
+
+GSS questions cover a diverse range of issues including national spending priorities, marijuana use, crime and punishment, race relations, quality of life, confidence in institutions, and sexual behavior.
+
+The data extract contains 57061 observations of 114 variables.
+
+Unlike the full General Social Survey Cumulative File, the extract has been sanitized by removing missing values from the responses and factor variables were created when appropriate to facilitate analysis using R.
+
+### Data scope  
+
+The data sample is randomized across all united states so it can be generalized on all the adult from 18 to 89 years old but causal inference is not recommended becuase it's an observational data and causality needs a  variable that changes accross the time 
+* * *
+
+## Part 2: Research question :
+### 1) is there a difference between races in the mean socioeconomic index ?
+
+### 2) are number of childern and SEI dependent or not ?
+
+### 3) is there a dependency betweeen the gender and acceptence of having another sexual life during marriage or it depends on the person's morales regardless his gender ?
+
+#### Used variables : sei , childs , race , sex and xmarxes 
+
+* * *
+
+## Part 3: Exploratory data analysis
+
+
+
+### Q1 : 
+```{r}
+boxplot(gss$sei ~ gss$race , col = "yellow" , main = "socioeconomic index by race " , xlab = "Race" , ylab = "SEI")
+
+gss %>% group_by(race) %>% summarise(sei = mean(sei , na.rm = TRUE))
+
+```
+#### it seems that there  is a differnce in there mean sei so i will conduct a hypothesis test to make an infernece in the whole population or no and it will be an anova test since there are more than two means .
+
+
+
+### Q2 :
+```{r}
+
+sei_childs <- gss %>% filter(!is.na(gss$sei ) & !is.na(gss$childs)) #removing na values
+
+sei_childs_grouped <- sei_childs %>% group_by(childs) %>% summarise(sei = mean(sei)) %>% print ## this grouped data will be used in ggplot to represet the relation between the two variables 
+
+ggplot(data = sei_childs_grouped , aes(x = childs , y = sei , fill = childs)) +
+ geom_point() +
+ geom_smooth(method = "lm" ) +
+ ggtitle("Sei by number of childern") +
+ theme(plot.title = element_text(hjust = 0.5)) +
+ scale_x_discrete(limits = c(0:8) )
+
+ggplot(data = sei_childs_grouped , aes(x = childs , y = sei , fill = childs)) +
+  geom_col() +
+  ggtitle("Sei by number of childern") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_discrete(limits = c(0:8) )
+
+```
+
+#### so there is a clear relationship between the number of childs and sei but we want to make a test that this will be the case on the population also or we don't have sufficient evidence.
+
+### Q3 :
+
+```{r}
+proportions <- gss %>% select(sex,xmarsex) %>% filter(!is.na(sex) & !is.na(xmarsex) ) %>% group_by(sex) %>% table() 
+
+
+proportions[1,]  <- proportions[1,] / sum(proportions[1,])
+proportions[2,]  <- proportions[2,] / sum(proportions[2,])
+
+proportions
+
+plot( gss$xmarsex ~ gss$sex , main = "acceptence level of other sexual life than the marriage one by gender " , xlab = "gender" , ylab = "acceptence level")
+```
+
+#### so it seems that there is a differnce between the males and females so i will conduct a chi_square test to see if the difference between them will be significant enough to say thay there is a relation or no 
+
+
+
+## part 4: Inference 
+
+#### i used in the first two research questions anova test as i have a numerical variable that is splited by catagorical variable with more than two levels, hence there is a comparison between more than two means, in question 1 the 3 means of races and in question 2 the 9 means of sei for each number of childs.
+
+#### in anova there is no need for confidence interval
+
+## checking conditions  :
+
+#### 1) independence --> the samples within the groups are independent and the groups with themselfs are independent
+#### 2) distributions are nearly normal within each group 
+#### 3) the variablity is consistent among the groups 
+
+### Q1 :
+#### H0 : there is no difference in the mean of sei between different races
+#### Ha : there is a difference in the mean of sei between different races
+```{r}
+gss <- gss %>% filter(!is.na(sei) & !is.na(race)) ##making sure there is no na   
+sum(is.na(gss$race))
+
+inference(y = sei , x = race , data = gss , method = "theoretical" , type = "ht" , statistic = "mean" , null = 0 , alternative = "greater")
+
+## making pair wise T test using bonferroni method to avoid very small p-value and hence making type 1 error 
+pairwise.t.test(gss$sei, gss$race, p.adj="bonferroni")
+
+```
+
+#### conclusion :
+##### since the p-value is less than 0.05 we reject the null hypothesis and hence there is a difference between the mean sei of different races which open the door for more investigation for the causes of this. 
+
+### Q2 :
+#### H0 : there is no dependency between the number of childs and sei
+#### Ha : there is dependency between the number of childs and sei
+```{r}
+sei_childs$childs <- as.factor(sei_childs$childs) #converting childs from numerical to catagorical variable
+
+inference(y =sei , x = childs, data = sei_childs, statistic = "mean", type = "ht", null = 0, alternative = "greater", method = "theoretical")
+
+## to avoid very small p-value and see the groups that is really different than each other
+pairwise.t.test(gss$sei, gss$childs, p.adj="bonferroni")
+
+```
+
+#### Conclusion : 
+
+##### p-value is less than 0.05 so we reject the null hypothesis hence there is indedd a relationship between the number of childern and socioeconomic index and it seems that the more childern the less sei but more causal analysis need to be conducted.
+
+### Q3 : 
+#### H0 : gender and xmarsex are independent of each other
+#### Ha : gender and xmarsex are dependent of each other
+
+#### chi_sqaure conditions :
+1) independence cindition is applied since the data is randomized and surly the sample size is less than 10% of the popoulation and each case contribute in only one cell
+2) each particular scenario has at least 5 expected cases and i will remove other column as it's all zeros 
+
+#### there will be no need for confidence interval 
+
+```{r}
+sex_xmarsex <- gss %>% select(sex,xmarsex) %>% filter(!is.na(sex) & !is.na(xmarsex) ) %>% group_by(sex) %>% table() %>% print
+sex_xmarsex <- sex_xmarsex[,-5] ##removing the last column as it's not applying the condition of at least 5 cases so chisq.test will not work with this column
+chisq.test(sex_xmarsex)
+```
+
+#### Conclusion :
+
+##### since p-value is near to zero we reject the null hypothesis which mean that the gender of a person affects his view in havin another sexual life while marriage and more causal analysis need to be done to get more details about this relationship.
+
+
