@@ -4,6 +4,7 @@ author: "Mohie eldin Muhammad"
 date : "2019/9/13"
 output:
   html_document:
+    keep_md: true
     toc : yes 
     fig_height: 4
     highlight: pygments
